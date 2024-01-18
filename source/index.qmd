@@ -1,0 +1,11 @@
+---
+title: ""
+---
+
+# Summary 
+
+I am PhD student with six years of full-time Industrial Systems Software development experience, who is passionate about developing a deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current research focus is to develop carbon efficient computing systems using Machine Learning.
+
+# Education
+
+
