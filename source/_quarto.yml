@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Abdul_Rehman"
+  title: "Abdul Rehman"
   navbar:
     left:
       - href: index.qmd
