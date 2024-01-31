@@ -1,11 +1,34 @@
 ---
 title: ""
+bibliography: references.bib
+csl: data/acm-sig-proceedings.csl
 ---
 
 # Summary 
 
-I am PhD student with six years of full-time Industrial Systems Software development experience, who is passionate about developing a deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current research focus is to develop carbon efficient computing systems using Machine Learning.
+I am a second year PhD student with two years of research experience and six years of full-time Industrial Systems Software development experience. I am passionate about developing deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current area of research is to develop carbon efficient computing systems using Machine Learning.
 
-# Education
+  * [CV](./data/resume.pdf)
+  * [Google Scholar](https://scholar.google.com/citations?user=8LD5hmQAAAAJ&hl=en&oi=sra)
 
+# Publications 
+---
+nocite: |
+  @hpdc23, @*
+---
+::: {#refs}
+:::
+
+# Projects 
+
+## Extensible Data Analytics System - Using Edge Computing  
+
+  * github link
+  * presentation 
+
+# Blog 
+
+## 2023
+  
+  * design and implementation 
 

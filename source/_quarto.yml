@@ -2,12 +2,23 @@ project:
   type: website
 
 website:
+
   title: "Abdul Rehman"
-  navbar:
-    left:
+
+  sidebar:
+
+    logo: ./data/me.jpg
+    style: "docked"
+    search: true
+    
+    contents:
+      - text: "---"
       - href: index.qmd
         text: Home
-      - about.qmd
+      - text: "---"
+
+  back-to-top-navigation: false 
+  page-footer: "Copyright 2024, Abdul Rehman"
 
 format:
   html:
