@@ -4,7 +4,30 @@
     "href": "index.html",
     "title": "Summary",
     "section": "",
-    "text": "Summary\nI am PhD student with six years of full-time Industrial Systems Software development experience, who is passionate about developing a deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current research focus is to develop carbon efficient computing systems using Machine Learning.\n\n\nEducation"
+    "text": "I am a second year PhD student with two years of research experience and six years of full-time Industrial Systems Software development experience. I am passionate about developing deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current area of research is to develop carbon efficient computing systems using Machine Learning.\n\nCV\nGoogle Scholar",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#extensible-data-analytics-system---using-edge-computing",
+    "href": "index.html#extensible-data-analytics-system---using-edge-computing",
+    "title": "Summary",
+    "section": "Extensible Data Analytics System - Using Edge Computing",
+    "text": "Extensible Data Analytics System - Using Edge Computing\n\ngithub link\npresentation",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "Summary",
+    "section": "2023",
+    "text": "2023\n\ndesign and implementation",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "about.html",
