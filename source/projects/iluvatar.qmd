@@ -18,7 +18,7 @@ description: >
 
 # About the project {#page-ilu}
   
-It's a serverless platform developed with the the intent to ease research and provide 
+It's a serverless platform developed with the intent to ease research and provide 
 deterministic results. 
 Whole platform is written in Rust (Safe and Reliable language for Systems development).
 

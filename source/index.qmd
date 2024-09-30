@@ -15,15 +15,13 @@ listing:
       - "posts/*.qmd"
 ---
 
-
-# Summary 
-
 Ph.D. student with 8+ years of systems software development (6 years of full time industrial position) 
 and systems research (2 years) experience. 
 During my time in industry I have worked on UEFI firmware, Nucleus RTOS, NVMe virtualization and GPU virtualization.
 
 For past two years, my focus has been on serverless computing, linux scheduling and Machine Learning. 
 I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox. 
+I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
 
 I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myraid of interconnected components. 
 
@@ -36,7 +34,6 @@ Currently, I am trying to improve the performance of a
 [serverless platform](https://github.com/COS-IN/iluvatar-faas) 
 using eBPF based [sched_ext](https://github.com/sched-ext/scx) framework to implement custom scheduling policy that would 
 take advantage of the historical characteristics of the serverless functions and tight coupling with the control plane. 
-I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
 
 # Publications 
 
@@ -78,6 +75,10 @@ and use it for a completely different purpose.
 * picture of a fish (gif) 
 
 When I am not sitting idle, I love to spend time with my family and hike. 
+
+# Todos 
+
+  * add github link
 
 <!--
   - id: tools-listings
