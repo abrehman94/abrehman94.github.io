@@ -2,33 +2,91 @@
 title: ""
 bibliography: references.bib
 csl: data/acm-sig-proceedings.csl
+
+nocite: |
+  @hpdc23, @*
+
+listing:
+  - id: project-listings
+    contents: 
+      - "projects/*.qmd"
+  - id: posts-listings
+    contents: 
+      - "posts/*.qmd"
 ---
+
 
 # Summary 
 
-I am a second year PhD student with two years of research experience and six years of full-time Industrial Systems Software development experience. I am passionate about developing deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current area of research is to develop carbon efficient computing systems using Machine Learning.
+Ph.D. student with 8+ years of systems software development (6 years of full time industrial position) 
+and systems research (2 years) experience. 
+During my time in industry I have worked on UEFI firmware, Nucleus RTOS, NVMe virtualization and GPU virtualization.
+
+For past two years, my focus has been on serverless computing, linux scheduling and Machine Learning. 
+I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox. 
+
+I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myraid of interconnected components. 
 
   * [CV](./data/resume.pdf)
   * [Google Scholar](https://scholar.google.com/citations?user=8LD5hmQAAAAJ&hl=en&oi=sra)
 
+# Research Focus
+
+Currently, I am trying to improve the performance of a 
+[serverless platform](https://github.com/COS-IN/iluvatar-faas) 
+using eBPF based [sched_ext](https://github.com/sched-ext/scx) framework to implement custom scheduling policy that would 
+take advantage of the historical characteristics of the serverless functions and tight coupling with the control plane. 
+I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
+
 # Publications 
----
-nocite: |
-  @hpdc23, @*
----
+
 ::: {#refs}
 :::
 
-# Projects 
+# Projects
 
-## Extensible Data Analytics System - Using Edge Computing  
+::: {#project-listings}
+:::
 
-  * github link
-  * presentation 
+# Blog Posts
 
-# Blog 
+::: {#posts-listings}
+:::
 
-## 2023
-  
-  * design and implementation 
+# Tools
+
+My day to day tools  
+
+  * tmux
+  * vim
+  * ssh 
+  * bash 
+  * eBPF 
+  * python
+  * rust  
+
+# Who am I? 
+
+I am someone who can stare at a tree for long hours, thinking about how each molecule of 
+air works together to move energy from one place to another moving the leaves in a way 
+that can be mathematically determined yet it seems so undeterministic. How we are 
+no different than a fish living in a sea witnessing the same effect of energy on 
+a seaweed but still different enough to reason about it, develop an understanding
+and use it for a completely different purpose. 
+
+* picture of a tree (gif)
+* picture of a fish (gif) 
+
+When I am not sitting idle, I love to spend time with my family and hike. 
+
+<!--
+  - id: tools-listings
+    contents: 
+      - "tools/*.qmd"
+
+::: {#tools-listings}
+:::
+
+-->
+
 

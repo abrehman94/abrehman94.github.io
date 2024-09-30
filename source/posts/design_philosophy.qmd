@@ -1,0 +1,173 @@
+---
+title: "Design Philosophy"
+date: 2024-06-13
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abdulrehman 
+description: >
+  My philosophy on designing systems. 
+bibliography: references.bib
+---
+<!--
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+-->
+
+## Summary  
+
+This article describes my philosophy on designing systems which is centered
+around drawing similarity with a human body. 
+It also summarizes principles from Robert C @martin2000design article and stuff that I have 
+collected over the years.
+
+## Strange similarity between a program, a system, a cell and a human body. 
+
+A system is a collection of components that work together to achieve a specific objective. 
+Human body is a system built up of extraordinary complex systems working together. 
+It must be following some principles that are universal which can be used to build
+efficient and reliable systems.
+
+Let's draw some similarities between a human body and a program.
+
+Body
+
+  * skeleton
+  * muscles
+  * coordinated actions
+
+Cell
+
+  * DNA
+  * protein synthesis
+  * coordinated structures 
+  
+Turing machine 
+
+  * memory - DNA
+  * tape - protein synthesis
+  * coordinated actions - coordinated structures
+
+Program
+
+  * interfaces / abstractions - skeleton 
+  * specialized functions / logic units - muscles 
+
+System 
+
+  * abstractions - skeleton 
+  * specialized units - muscles
+  * coordinated output - coordinated actions
+
+Skeleton of a human body supports the whole structure, interfaces and abstractions are like the skeleton of a program.
+Muscles help the body to move, logic units are like the muscles of a program. 
+Based on this analogy, it is prudent to first design abstractions and interfaces carefully and then build the logic units, kind of like the functional programming approach.
+In this way, for every new requirement it should be possible to spin up a new 
+interconnection of muscles (logic units) to achieve the desired output.
+Let's call the interconnection of logic units configuration. 
+
+To summarize a possible way to approach building a new system 
+
+  * design skeleton of abstractions that can be moved in whatever way you want!
+  * create smallest possible logic units  
+  * create dependency firewalls! (implicit skeleton)
+  * manage placement / dependencies 
+
+## Traditional Principles from Robert C Martin's Article
+
+**Dependency Inversion:** Depend on abstractions rather then concrete stuff.
+
+**Interface Segregation:** Create interface at I/O - preferably common for common clients.
+
+**Liskov Substitution:** Derived class object must keep implicit contracts (pre/post - conditions) of base class.
+
+**Open/Close Principle:** Code should be open to extension (able to change dependencies) but closed to modification (no change to logic units / skeleton). 
+
+Ways to make it Open
+
+  * inheritance
+  * configurations
+  * I/O  
+  * recursion  
+    
+Closed 
+
+  * abstractions
+  * I/O interfaces
+  * start/stop states
+
+It is about categorizing what can change, what cannot change and how to minimize the need for change. 
+
+## Building a System  
+  
+  * Understand the requirements.
+  * Understand why the requirements are there.
+  * List down fundamental components that might be involved. 
+    * Build discrete examples of each component to get a feel of it. 
+  * Design abstractions and interfaces.
+  * Design the skeleton of the system.
+  * Correlate the sketch with requirements.
+  * Fill in the implementation details.
+  * Implement. 
+
+## Implementation Principles
+
+Fundamental Components (essentially boils down to functional programming approach)
+
+  * configuration 
+  * logic - stateless functions
+  * I/O
+
+Guidelines
+
+  * developing logic 
+    * divide to the most basic
+    * group by most common 
+      * encode context in directory structure
+      * program design should be inherent in file structure/code
+        * use absolute paths - to enable scripts to run from anywhere
+    * there should be no duplication of logic
+    
+    * run the program in a debugger from the very start 
+      * add alot of asserts instead of debug prints 
+   
+  * developing parallel programs 
+    * make sure it works in serial first
+
+  * I/O
+    * log everything
+      * use disk for I/O 
+      * **Interoperation:** Expect the output of every program to become the input to another, as yet unknown, program (UNIX philosophy). 
+
+  * keep everything in version control
+  * separate development phase from refinement
+    * create a proof of concept as fast as possible it can always be refined latter 
+    * **Fast POC:** Design and build software to be tried early, within weeks. Don't hesitate to throw away the clumsy parts and rebuild them. 
+  
+  * using a new tool / software / library  
+    * read philosophy guide / overview 
+    * create an example before use
+      * use jupyter notebook - for data analysis (quick data / visual feedback with state saving)
+    * then use in project or script for regular use 
+
+  * **Single Responsibility:** Make each program do one thing well. Build afresh rather than complicating old programs by adding new "features".
+  * **Use tools instead of labor:** 
+    * prefer tools instead of unskilled help to lighten a programming task, 
+    * even if you have to detour to build the tools and expect to throw some of them out after you've finished using them.
+  * **Idempotence:** make scripts in a way - they can run again and again without any side effects - producing same result
+
+  * scripting 
+    * always try to use absolute paths (helps in running scripts from anywhere)
+
+## Solving problems as they occur
+
+  * try to understand the root cause (essence) by asking Why? at least three times
+  * try adding another level of indirection to solve the problem
+  * if stuck for 2 hours, try an alternative simpler approach or discuss with someone
+
+
+
+

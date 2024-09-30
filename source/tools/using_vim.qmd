@@ -1,0 +1,26 @@
+---
+title: "Using VIM"
+date: 2024-06-13
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+  This lesson will introduce you to the VIM text editor. 
+  VIM is a powerful text editor that is available on most UNIX systems. 
+  It is a modal editor, which means that it has different modes for 
+  inserting text and moving around the file. 
+  This lesson will cover the basics of VIM, including how to open and 
+  close files, how to navigate within a file, and how to save changes. 
+  By the end of this lesson, you will be able to use VIM to create and 
+  edit text files.
+---
+
+About this site
+
+

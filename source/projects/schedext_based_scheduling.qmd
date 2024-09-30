@@ -1,0 +1,54 @@
+---
+title: "Improving performance of a serverless platform"
+date: 2024-09-27
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+  This blog post discusses my recent work on implementing custom scheduling policy (using SchedExt framework) to improve the performance 
+  of a serverless platform (written in Rust).
+---
+
+# SchedExt Framework  
+
+As of Sep 2024, SchedExt is a new framework which will become part of [Linux 6.12 kernel](https://lwn.net/SubscriberLink/991205/deed0c808397b420/).  
+It introduces a new scheduling class at the same priority level as EEVDF which allows BPF programs to modify the scheduling decisions. 
+It's possible to write a BPF program which can register following callbacks (only few basic ones are mentioned).
+
+  * init/exit_task 
+  * select_cpu 
+  * dispatch
+  * init/exit_scheduler
+
+By virtue of these callbacks, any arbitrary scheduling policy can be implemented. 
+
+Important gotos: 
+
+  * [SchedExt Kernel Documentation](https://github.com/sched-ext/scx-kernel-releases/blob/sched_ext/for-6.12/Documentation/scheduler/sched-ext.rst)
+  * [Sample SchedExt Schedulers](https://github.com/sched-ext/scx)
+  * [SchedExt Kernel Releases](https://github.com/sched-ext/scx-kernel-releases)
+
+# Serverless Control Plane 
+
+My proof of concept is developed on a radical serverless control plane that has been completely written to Rust which provides 
+saftey gurantees and performant implementation. See [project Ilúvatar](iluvatar.qmd) for details about the control plane. 
+
+# Metadata Driven Policy      
+
+I am trying to develop a policy that is driven by the metadata of functions as captured by the control plane. 
+Currently, I have developed a [POC of a policy](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c)
+that divides the available cores into buckets and assigns function to each bucket 
+based on the historical end to end time of the function. 
+Metadata is shared between the control plane and the schedext scheduler using a 
+[pinned eBPF map](https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_bpf_library). 
+
+The POC naturally works for short running functions, by isolating cores for them from long running functions. 
+
+
+

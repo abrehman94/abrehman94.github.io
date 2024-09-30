@@ -1,0 +1,60 @@
+---
+title: "Iluvatar a Fast Serverless Control Plane written in Rust"
+date: 2023-06-01
+bibliography: ../references.bib
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+  During my first year of Ph.D I worked on a radical approach to serverless computing. 
+  A monolithic, worker centric platform for serverless computing. 
+---
+
+# About the project {#page-ilu}
+  
+It's a serverless platform developed with the the intent to ease research and provide 
+deterministic results. 
+Whole platform is written in Rust (Safe and Reliable language for Systems development).
+
+It is a worker centric design which allows overcommitment of resources, multiple queue implementations,
+support for different execution end points (CPU, GPU) and support for simulating the execution workload. 
+Deployment across the servers is supported via ansible. 
+
+Modular design of Ilúvatar allows fast paced development and experimentation. For instance, 
+adding a new Queueing scheme is a matter of adding a rust module in 
+[queueing directory](https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing).
+
+Please see our paper[-@hpdc23] for more details. 
+
+# My contributions 
+
+From 2022 to 2023, my contributions to this project has been to add support for capturing characteristics of 
+functions and develop different queueing schemes.  
+
+**[Function Characteristics:](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/utils/characteristics_map.rs)** 
+Hashmap of function characteristics like end to end time, inter arrival time and code execution time on the worker. 
+
+**[Queueing Schemes:](https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing)**
+I developed the abstraction for priority queue and implemented two priority queue based schemets. 
+ 
+  * [Abstraction for priority queue](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap.rs)
+  * [EVDF](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_ed.rs) (early virtual deadline first) based on e2e time 
+  * [Most frequent function first](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_iat.rs) based on iat time
+
+### References
+
+::: {#refs}
+:::
+
+
+
+
+
+
+

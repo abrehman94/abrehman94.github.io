@@ -1,0 +1,26 @@
+---
+title: "DNNTop: Deep Neural Network based Power Model of the system and top utility"
+date: 2024-06-13
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+  It's a tool that builds the power model of the system by running stress tests and 
+  capturing utilization metrics to train a deep neural network. Model is used at 
+  runtime to make predictions about the power consumption based on the utilization. 
+---
+
+* publication 
+
+* identify the contributions to the project 
+  * queueing infrastructure 
+  * characteristics map 
+
+
+

@@ -1,0 +1,21 @@
+---
+title: "Luddy Summer School 2024"
+date: 2024-06-13
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+  Gave lecture on introduction to bash scripting to high school students.   
+bibliography: references.bib
+---
+
+# Introduction
+
+
+
