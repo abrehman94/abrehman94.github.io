@@ -33,7 +33,8 @@ I enjoy diving deep into complex problems, trying to find the last ounce of perf
 Currently, I am trying to improve the performance of a 
 [serverless platform](https://github.com/COS-IN/iluvatar-faas) 
 using eBPF based [sched_ext](https://github.com/sched-ext/scx) framework to implement custom scheduling policy that would 
-take advantage of the historical characteristics of the serverless functions and tight coupling with the control plane. 
+take advantage of the historical characteristics of the serverless functions, tight coupling with the control plane and 
+machine learning. 
 
 # Publications 
 
@@ -78,7 +79,8 @@ When I am not sitting idle, I love to spend time with my family and hike.
 
 # Todos 
 
-  * add github link
+  * add button for [github profile](https://github.com/abrehman94)
+  * google scholar link 
 
 <!--
   - id: tools-listings

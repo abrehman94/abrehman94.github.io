@@ -1,5 +1,5 @@
 ---
-title: "Improving performance of a serverless platform"
+title: "Targeted Scheduling for a serverless platform"
 date: 2024-09-27
 author:
   - name: Abdul Rehman 
@@ -11,20 +11,21 @@ author:
         state: IN 
         url: luddy.indiana.edu 
 description: >
-  This blog post discusses my recent work on implementing custom scheduling policy (using SchedExt framework) to improve the performance 
+  My recent work on implementing custom cpu scheduling (using SchedExt framework) to improve the performance 
   of a serverless platform (written in Rust).
 ---
 
 # SchedExt Framework  
 
-As of Sep 2024, SchedExt is a new framework which will become part of [Linux 6.12 kernel](https://lwn.net/SubscriberLink/991205/deed0c808397b420/).  
-It introduces a new scheduling class at the same priority level as EEVDF which allows BPF programs to modify the scheduling decisions. 
+As of Sep 2024, SchedExt is a new framework which will become part of [Linux 6.12 kernel](https://lwn.net/SubscriberLink/991205/deed0c808397b420/). It introduces a new scheduling class at the same priority level as EEVDF which allows BPF programs to modify the scheduling decisions. 
 It's possible to write a BPF program which can register following callbacks (only few basic ones are mentioned).
 
-  * init/exit_task 
-  * select_cpu 
-  * dispatch
-  * init/exit_scheduler
+```
+  * init/exit_task      - a new task is created or an existing task is destroyed
+  * select_cpu          - select a CPU for a task
+  * dispatch            - a task needs to be dispatched to local DSQs of the SchedExt core
+  * init/exit_scheduler - a new scheduler is created or an existing scheduler is destroyed
+```
 
 By virtue of these callbacks, any arbitrary scheduling policy can be implemented. 
 
@@ -36,19 +37,23 @@ Important gotos:
 
 # Serverless Control Plane 
 
-My proof of concept is developed on a radical serverless control plane that has been completely written to Rust which provides 
-saftey gurantees and performant implementation. See [project Ilúvatar](iluvatar.qmd) for details about the control plane. 
+Proof of concept is developed on a research centric serverless control plane that is implemented in Rust. 
+See [project Ilúvatar](iluvatar.qmd) for details about the control plane. 
 
 # Metadata Driven Policy      
 
-I am trying to develop a policy that is driven by the metadata of functions as captured by the control plane. 
-Currently, I have developed a [POC of a policy](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c)
-that divides the available cores into buckets and assigns function to each bucket 
-based on the historical end to end time of the function. 
-Metadata is shared between the control plane and the schedext scheduler using a 
-[pinned eBPF map](https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_bpf_library). 
+The idea is that the metadata of the functions available to the Control Plane can be used to hint the 
+CPU scheduler to make better scheduling decisions.
+With the help of SchedExt framework, we can develop sophisticated scheduling policies that are tightly 
+integrated with the control plane.
 
-The POC naturally works for short running functions, by isolating cores for them from long running functions. 
+[Proof of Concept:](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c)
+A task size interval assignment policy that is driven by 
+execution time of the functions while enforcing locality works better for\ 
+short single threaded functions as opposed to long multi threaded functions. 
+This POC divides the available cores into buckets and assigns function to [each bucket](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c#L135) based on the historical end to end time of the function. 
+Metadata is shared between the control plane and the schedext scheduler using a [pinned eBPF map](https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_bpf_library). 
+
 
 
 

@@ -1,10 +1,15 @@
 ---
 title: "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
-date: 2024-03-13
+date: 2024-01-24
 author:
   - name: Abdul Rehman 
     orcid: 0009-0005-1568-8068 
-    email: abdulrehmanee010@gmail.com 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
 description: >
   Energy Insights In a Box is a data analytics system that can be used to capture and analyze data in real time. The system is designed to be deployed on edge devices like Jetson Orin.
 bibliography: references.bib

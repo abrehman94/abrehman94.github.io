@@ -20,10 +20,11 @@ description: >
   
 It's a serverless platform developed with the intent to ease research and provide 
 deterministic results. 
-Whole platform is written in Rust (Safe and Reliable language for Systems development).
+Whole platform is written in Rust (Safe and Reliable language for Systems development) using 
+tonic (a gRPC framework implementation in Rust).
 
 It is a worker centric design which allows overcommitment of resources, multiple queue implementations,
-support for different execution end points (CPU, GPU) and support for simulating the execution workload. 
+support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. 
 Deployment across the servers is supported via ansible. 
 
 Modular design of Ilúvatar allows fast paced development and experimentation. For instance, 
@@ -38,14 +39,14 @@ From 2022 to 2023, my contributions to this project has been to add support for 
 functions and develop different queueing schemes.  
 
 **[Function Characteristics:](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/utils/characteristics_map.rs)** 
-Hashmap of function characteristics like end to end time, inter arrival time and code execution time on the worker. 
+Hashmap of function characteristics like end to end time, inter arrival time (IAT) and code execution time on the worker. 
 
 **[Queueing Schemes:](https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing)**
-I developed the abstraction for priority queue and implemented two priority queue based schemets. 
+Priority based queueing schemes using execution time and IAT.  
  
-  * [Abstraction for priority queue](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap.rs)
-  * [EVDF](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_ed.rs) (early virtual deadline first) based on e2e time 
-  * [Most frequent function first](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_iat.rs) based on iat time
+  * code execution time based priority queue - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap.rs)
+  * earliest virtual deadline first based priority queue using code execution time to decide the deadline - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_ed.rs)  
+  * most frequent function first based priority queue using IAT - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_iat.rs) 
 
 ### References
 
