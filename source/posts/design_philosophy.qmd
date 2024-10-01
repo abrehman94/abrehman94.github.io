@@ -1,10 +1,15 @@
 ---
-title: "Design Philosophy"
-date: 2024-06-13
+title: "Design Philosophy for Systems"
+date: 2022-12-13
 author:
   - name: Abdul Rehman 
     orcid: 0009-0005-1568-8068 
-    email: abdulrehman 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
 description: >
   My philosophy on designing systems. 
 bibliography: references.bib
@@ -62,18 +67,21 @@ System
   * specialized units - muscles
   * coordinated output - coordinated actions
 
-Skeleton of a human body supports the whole structure, interfaces and abstractions are like the skeleton of a program.
-Muscles help the body to move, logic units are like the muscles of a program. 
-Based on this analogy, it is prudent to first design abstractions and interfaces carefully and then build the logic units, kind of like the functional programming approach.
-In this way, for every new requirement it should be possible to spin up a new 
-interconnection of muscles (logic units) to achieve the desired output.
+Skeleton of a human body supports the whole structure while muslcles move the body. 
+Interfaces and abstractions are like the skeleton of a program.
+Logic units are like the muscles of a program. 
+Based on this analogy, it is prudent to first design abstractions and interfaces carefully and then build the logic units.
+Naturally it points to the functional programming approach which is proving practically 
+useful with Rust (Reliable and Performant Programing Language for Systems).
+If the abstractions are carefully designed, it should be possible to spin up a new 
+interconnection of muscles (logic units) for each new requirement to achieve the desired output.
 Let's call the interconnection of logic units configuration. 
 
 To summarize a possible way to approach building a new system 
 
-  * design skeleton of abstractions that can be moved in whatever way you want!
-  * create smallest possible logic units  
-  * create dependency firewalls! (implicit skeleton)
+  * design skeleton of abstractions that can be moved in a flexible way 
+  * create smallest possible logic units that can be interconnected
+  * create dependency firewalls (implicit skeleton)
   * manage placement / dependencies 
 
 ## Traditional Principles from Robert C Martin's Article
@@ -148,7 +156,7 @@ Guidelines
     * **Fast POC:** Design and build software to be tried early, within weeks. Don't hesitate to throw away the clumsy parts and rebuild them. 
   
   * using a new tool / software / library  
-    * read philosophy guide / overview 
+    * read philosophy guide / overview of the software 
     * create an example before use
       * use jupyter notebook - for data analysis (quick data / visual feedback with state saving)
     * then use in project or script for regular use 

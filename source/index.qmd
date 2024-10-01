@@ -10,9 +10,16 @@ listing:
   - id: project-listings
     contents: 
       - "projects/*.qmd"
+    sort: "date desc"
+    type: default
+    image-height: 0px
+
   - id: posts-listings
     contents: 
       - "posts/*.qmd"
+    sort: "date desc"
+    type: default
+    image-height: 0px
 ---
 
 Ph.D. student with 8+ years of systems software development (6 years of full time industrial position) 
@@ -26,7 +33,8 @@ I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.ed
 I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myraid of interconnected components. 
 
   * [CV](./data/resume.pdf)
-  * [Google Scholar](https://scholar.google.com/citations?user=8LD5hmQAAAAJ&hl=en&oi=sra)
+  * [Github Profile](https://github.com/abrehman94)
+  * [Google Scholar Profile](https://scholar.google.com/citations?user=8LD5hmQAAAAJ&hl=en&oi=sra)
 
 # Research Focus
 
@@ -63,24 +71,17 @@ My day to day tools
   * python
   * rust  
 
-# Who am I? 
+# Beyond work
 
 I am someone who can stare at a tree for long hours, thinking about how each molecule of 
 air works together to move energy from one place to another moving the leaves in a way 
-that can be mathematically determined yet it seems so undeterministic. How we are 
-no different than a fish living in a sea witnessing the same effect of energy on 
-a seaweed but still different enough to reason about it, develop an understanding
-and use it for a completely different purpose. 
+that can be mathematically determined yet it seems so undeterministic. 
+How are we no different from a fish living in a sea, 
+witnessing the same effect of energy on a seaweed, 
+yet different enough to reason about it and develop such a deep understanding of it, 
+so much so that we can use it for a completely different purpose.
 
-* picture of a tree (gif)
-* picture of a fish (gif) 
-
-When I am not sitting idle, I love to spend time with my family and hike. 
-
-# Todos 
-
-  * add button for [github profile](https://github.com/abrehman94)
-  * google scholar link 
+I love to spend time with my family, drive and hike. 
 
 <!--
   - id: tools-listings

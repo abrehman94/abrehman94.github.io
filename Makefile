@@ -6,6 +6,6 @@ build:
 	mv $(src)/_site/* ./
 
 preview:
-	cd $(src) && quarto preview  
+	cd $(src) && quarto preview --port 8074
 
 

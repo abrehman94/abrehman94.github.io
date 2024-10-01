@@ -11,10 +11,13 @@ author:
         state: IN 
         url: luddy.indiana.edu 
 description: >
-  Energy Insights In a Box is a data analytics system that can be used to capture and analyze data in real time. The system is designed to be deployed on edge devices like Jetson Orin.
+  A data analytics system that captures and analyzes data in real time. 
+  The system is designed to be deployed on edge devices like Jetson Orin.
 bibliography: references.bib
 ---
 
+
+<!--
 <h1 align="center"  style="border-bottom: none">
     <a href="//localhost" target="_blank"><img width="50%" alt="Edge-IoT-Analytics-Box" src="./artifacts/einsights_logo.jpg"></a>
 </h1>
@@ -23,6 +26,7 @@ bibliography: references.bib
 <h2 align="center">Abdul Rehman</h2>
 <h3 align="center">Advisor: Prateek Sharma</h2>
 <h3 align="center">Indiana University, Bloomington</h3>
+-->
 
 # Table of Contents
 <!-- vim-markdown-toc Marked -->
@@ -39,19 +43,16 @@ bibliography: references.bib
 
 ## Overview 
 
-Edge-IoT-Analytics-Box is a data analytics system that can be used to capture and analyze data in real time. 
-The system is designed to be deployed on edge devices like Jetson Orin with following design goals.
+[Github Repository](https://github.com/abrehman94/Edge-IoT-Analytics-Box)
 
-  * extensibility 
-  * ease of research 
-  * minimum overhead from development to production 
+Edge-IoT-Analytics-Box is a data analytics system that captures and analyzes data in real time. 
+The system is designed to be deployed on edge devices like Jetson Orin.
 
 ## Architecture 
 
 <h1 align="center"  style="border-bottom: none">
     <a href="//localhost" target="_blank"><img width="90%" alt="Architecture" src="./artifacts/architecture.drawio.png"></a>
 </h1>
-
 
 ## Presentation 
 
@@ -69,16 +70,17 @@ For 54 sensors being predicted using arima model and RNN model
   * InfluxDB storage increases by ~7 Kbytes per second
     * it would take 866 days to fill up 500 Gb of space which is ~2.3 years
 
+Please see [report](https://github.com/abrehman94/Edge-IoT-Analytics-Box/blob/main/docs/performance_analysis/report.pdf) for more details.
+
 ## Repository Layout    
 
-For details of each module, please refer to the README.md in the respective directory.
+Each module has it's own directory.
 
-  * tserve 
-    * Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models. 
-  * analytics 
-    * Framework to setup the pipeline for data analytics using models deployed on torch serve. 
-  * streaming_service  
-    * Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.
+**./tserve (Torch Serve):** Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models. 
+
+**./analytics (Framework):** Framework to setup a data analytics pipeline using models deployed on torch serve. 
+
+**./streaming_service (Data Fetching):** Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.
 
 ## Getting Started 
 
@@ -88,5 +90,7 @@ For details of each module, please refer to the README.md in the respective dire
     * setup an analytics pipeline using the instructions in **analytics/README.md** 
 
   
+
+ 
 
 

@@ -10,12 +10,24 @@ website:
     logo: ./data/me.jpg
     style: "docked"
     search: true
-    
+
     contents:
+
       - text: "---"
       - href: index.qmd
         text: Home
       - text: "---"
+
+      - section: "Projects"
+        contents:
+          - ./projects/dataanalytics.qmd
+          - ./projects/iluvatar.qmd
+          - ./projects/schedext_based_scheduling.qmd
+
+      - section: "Blog Posts"
+        contents:
+          - ./posts/design_philosophy.qmd
+          - ./posts/luddy_summer_school.qmd
 
   back-to-top-navigation: false 
   page-footer: "Copyright 2024, Abdul Rehman"

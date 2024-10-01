@@ -11,11 +11,25 @@ author:
         state: IN 
         url: luddy.indiana.edu 
 description: >
-  Gave lecture on introduction to bash scripting to high school students.   
+    A tutorial introducing Linux and Bash Scripting to High School students. 
 bibliography: references.bib
 ---
 
-# Introduction
+# Overview 
+
+[Github Repository](https://github.com/abrehman94/Linux-Scripting-Tutorial)
+
+Developed a tutorial that introduces Ubuntu 20.02 to the High school 
+students. Starting from the basics of Linux, GUI interface to the 
+terminal environment. Then moving on to the bash scripting. 
+The tutorial is designed to be interactive and hands-on with an 
+exercise to sort songs by author name.
+
+# Memories 
+
+| <img width="200" alt="picture" src="./artifacts/p1.jpg"> | <img width="200" alt="picture" src="./artifacts/p4.jpg"> |
+| <img width="400" alt="picture" src="./artifacts/p3.jpg"> | 
+| <img width="400" alt="picture" src="./artifacts/p2.jpg"> |
 
 
 
