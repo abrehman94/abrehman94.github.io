@@ -9,7 +9,7 @@ build:
 	rm -rf ./tools/  || true 
 	rm -rf ./posts/  || true 
 
-	mv $(src)/_site/* ./
+	#mv $(src)/_site/* ./
 
 preview:
 	cd $(src) && quarto preview --port 8074
