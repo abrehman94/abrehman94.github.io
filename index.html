@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.546">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,6 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -86,7 +88,93 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-project-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-project-listings'] = new List('listing-project-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts-listings .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts-listings'] = new List('listing-posts-listings', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -133,6 +221,58 @@ div.csl-indent {
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Projects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projects/dataanalytics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edge-IoT Analytics-Box (Extensible Data Analytics System)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projects/iluvatar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iluvatar a Fast Serverless Control Plane written in Rust</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projects/schedext_based_scheduling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Targeted Scheduling for a serverless platform</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Blog Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/design_philosophy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Design Philosophy for Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/luddy_summer_school.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Luddy Summer School 2024</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -143,16 +283,12 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#research-focus" id="toc-research-focus" class="nav-link active" data-scroll-target="#research-focus">Research Focus</a></li>
   <li><a href="#publications" id="toc-publications" class="nav-link" data-scroll-target="#publications">Publications</a></li>
-  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a>
-  <ul class="collapse">
-  <li><a href="#extensible-data-analytics-system---using-edge-computing" id="toc-extensible-data-analytics-system---using-edge-computing" class="nav-link" data-scroll-target="#extensible-data-analytics-system---using-edge-computing">Extensible Data Analytics System - Using Edge Computing</a></li>
-  </ul></li>
-  <li><a href="#blog" id="toc-blog" class="nav-link" data-scroll-target="#blog">Blog</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2023</a></li>
-  </ul></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#blog-posts" id="toc-blog-posts" class="nav-link" data-scroll-target="#blog-posts">Blog Posts</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
+  <li><a href="#beyond-work" id="toc-beyond-work" class="nav-link" data-scroll-target="#beyond-work">Beyond work</a></li>
   </ul>
 </nav>
     </div>
@@ -162,13 +298,17 @@ div.csl-indent {
 
 
 
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<p>I am a second year PhD student with two years of research experience and six years of full-time Industrial Systems Software development experience. I am passionate about developing deep understanding of the computation stack from Baremetal (UEFI, RTOS), OS (Linux), Virtualization (Hypervisors) to Cloud abstractions (FaaS). My current area of research is to develop carbon efficient computing systems using Machine Learning.</p>
+<p>Ph.D.&nbsp;student with 8+ years of systems software development (6 years of full time industrial position) and systems research (2 years) experience. During my time in industry I have worked on UEFI firmware, Nucleus RTOS, NVMe virtualization and GPU virtualization.</p>
+<p>For past two years, my focus has been on serverless computing, linux scheduling and Machine Learning. I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox. I am working under the guidance of <a href="https://cgi.luddy.indiana.edu/~prateeks">Prateek Sharma</a> at Indiana University Bloomington.</p>
+<p>I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myraid of interconnected components.</p>
 <ul>
 <li><a href="./data/resume.pdf">CV</a></li>
-<li><a href="https://scholar.google.com/citations?user=8LD5hmQAAAAJ&amp;hl=en&amp;oi=sra">Google Scholar</a></li>
+<li><a href="https://github.com/abrehman94">Github Profile</a></li>
+<li><a href="https://scholar.google.com/citations?user=8LD5hmQAAAAJ&amp;hl=en&amp;oi=sra">Google Scholar Profile</a></li>
 </ul>
+<section id="research-focus" class="level1">
+<h1>Research Focus</h1>
+<p>Currently, I am trying to improve the performance of a <a href="https://github.com/COS-IN/iluvatar-faas">serverless platform</a> using eBPF based <a href="https://github.com/sched-ext/scx">sched_ext</a> framework to implement custom scheduling policy that would take advantage of the historical characteristics of the serverless functions, tight coupling with the control plane and machine learning.</p>
 </section>
 <section id="publications" class="level1">
 <h1>Publications</h1>
@@ -180,24 +320,193 @@ div.csl-indent {
 </section>
 <section id="projects" class="level1">
 <h1>Projects</h1>
-<section id="extensible-data-analytics-system---using-edge-computing" class="level2">
-<h2 class="anchored" data-anchor-id="extensible-data-analytics-system---using-edge-computing">Extensible Data Analytics System - Using Edge Computing</h2>
+<div id="listing-project-listings" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1727409600000" data-listing-file-modified-sort="1727712467412" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="327">
+<div class="thumbnail">
+<p><a href="./projects/schedext_based_scheduling.html" class="no-external"></a></p><a href="./projects/schedext_based_scheduling.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" style="height: 0px;">&nbsp;</div>
+</a><p><a href="./projects/schedext_based_scheduling.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="projects">
+<a href="./projects/schedext_based_scheduling.html" class="no-external">Targeted Scheduling for a serverless platform</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/schedext_based_scheduling.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./projects/schedext_based_scheduling.html" class="no-external">My recent work on implementing custom cpu scheduling (using SchedExt framework) to improve the performance of a serverless platform (written in Rust). </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/schedext_based_scheduling.html" class="no-external">
+<div class="listing-date">
+Sep 27, 2024
+</div>
+<div class="listing-author">
+Abdul Rehman
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1706072400000" data-listing-file-modified-sort="1727793699325" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="296">
+<div class="thumbnail">
+<p><a href="./projects/dataanalytics.html" class="no-external"></a></p><a href="./projects/dataanalytics.html" class="no-external">
+<p class="card-img-top"><img src="projects/artifacts/architecture.drawio.png" alt="Architecture" style="height: 0px;"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./projects/dataanalytics.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/dataanalytics.html" class="no-external">Edge-IoT Analytics-Box (Extensible Data Analytics System)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/dataanalytics.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./projects/dataanalytics.html" class="no-external">A data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin. </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/dataanalytics.html" class="no-external">
+<div class="listing-date">
+Jan 24, 2024
+</div>
+<div class="listing-author">
+Abdul Rehman
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1685592000000" data-listing-file-modified-sort="1727711395420" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
+<div class="thumbnail">
+<p><a href="./projects/iluvatar.html" class="no-external"></a></p><a href="./projects/iluvatar.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" style="height: 0px;">&nbsp;</div>
+</a><p><a href="./projects/iluvatar.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/iluvatar.html" class="no-external">Iluvatar a Fast Serverless Control Plane written in Rust</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/iluvatar.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./projects/iluvatar.html" class="no-external">During my first year of Ph.D I worked on a radical approach to serverless computing. A monolithic, worker centric platform for serverless computing. </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/iluvatar.html" class="no-external">
+<div class="listing-date">
+Jun 1, 2023
+</div>
+<div class="listing-author">
+Abdul Rehman
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="blog-posts" class="level1">
+<h1>Blog Posts</h1>
+<div id="listing-posts-listings" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1718251200000" data-listing-file-modified-sort="1727798968533" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="73">
+<div class="thumbnail">
+<p><a href="./posts/luddy_summer_school.html" class="no-external"></a></p><a href="./posts/luddy_summer_school.html" class="no-external">
+<p class="card-img-top"><img src="posts/artifacts/p1.jpg" alt="picture" style="height: 0px;"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/luddy_summer_school.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="blog-posts">
+<a href="./posts/luddy_summer_school.html" class="no-external">Luddy Summer School 2024</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/luddy_summer_school.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/luddy_summer_school.html" class="no-external">A tutorial introducing Linux and Bash Scripting to High School students. </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/luddy_summer_school.html" class="no-external">
+<div class="listing-date">
+Jun 13, 2024
+</div>
+<div class="listing-author">
+Abdul Rehman
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1670907600000" data-listing-file-modified-sort="1727796194273" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1086">
+<div class="thumbnail">
+<p><a href="./posts/design_philosophy.html" class="no-external"></a></p><a href="./posts/design_philosophy.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" style="height: 0px;">&nbsp;</div>
+</a><p><a href="./posts/design_philosophy.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/design_philosophy.html" class="no-external">Design Philosophy for Systems</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/design_philosophy.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/design_philosophy.html" class="no-external">My philosophy on designing systems. </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/design_philosophy.html" class="no-external">
+<div class="listing-date">
+Dec 13, 2022
+</div>
+<div class="listing-author">
+Abdul Rehman
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="tools" class="level1">
+<h1>Tools</h1>
+<p>My day to day tools</p>
 <ul>
-<li>github link</li>
-<li>presentation</li>
+<li>tmux</li>
+<li>vim</li>
+<li>ssh</li>
+<li>bash</li>
+<li>eBPF</li>
+<li>python</li>
+<li>rust</li>
 </ul>
 </section>
-</section>
-<section id="blog" class="level1">
-<h1>Blog</h1>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2023</h2>
-<ul>
-<li>design and implementation</li>
-</ul>
+<section id="beyond-work" class="level1">
+<h1>Beyond work</h1>
+<p>I am someone who can stare at a tree for long hours, thinking about how each molecule of air works together to move energy from one place to another moving the leaves in a way that can be mathematically determined yet it seems so undeterministic. How are we no different from a fish living in a sea, witnessing the same effect of energy on a seaweed, yet different enough to reason about it and develop such a deep understanding of it, so much so that we can use it for a completely different purpose.</p>
+<p>I love to spend time with my family, drive and hike.</p>
+<!--
+  - id: tools-listings
+    contents: 
+      - "tools/*.qmd"
+
+::: {#tools-listings}
+:::
+
+-->
 
 
-</section>
+
 </section>
 
 </main> <!-- /main -->
