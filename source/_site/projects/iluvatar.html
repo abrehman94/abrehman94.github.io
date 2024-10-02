@@ -257,7 +257,7 @@ div.csl-indent {
 <section id="page-ilu" class="level1">
 <h1>About the project</h1>
 <p>It’s a serverless platform developed with the intent to ease research and provide deterministic results. Whole platform is written in Rust (Safe and Reliable language for Systems development) using tonic (a gRPC framework implementation in Rust).</p>
-<p>It is a worker centric design which allows overcommitment of resources, multiple queue implementations, support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. Deployment across the servers is supported via ansible.</p>
+<p>It is a worker centric design which allows overcommitment of resources, multiple queue implementations, support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. Deployment across the servers is supported via ansible. It can even run on edge devices like Jetson, hell yeah!.</p>
 <p>Modular design of Ilúvatar allows fast paced development and experimentation. For instance, adding a new Queueing scheme is a matter of adding a rust module in <a href="https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing">queueing directory</a>.</p>
 <p>Please see our paper<span class="citation" data-cites="hpdc23">(<a href="#ref-hpdc23" role="doc-biblioref">2023</a>)</span> for more details.</p>
 </section>
@@ -272,6 +272,7 @@ div.csl-indent {
 </li>
 <li>most frequent function first based priority queue using IAT - <a href="https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_iat.rs">implementation</a></li>
 </ul>
+<p>Added support to run the control plane on Jetson Orin. It involved rebuilding the functions the arm platform, adding support to capture utilization logs from the jtop utility and setting up 1 TB NVMe to enable hosting large number of containers.</p>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

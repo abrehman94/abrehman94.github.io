@@ -26,6 +26,7 @@ tonic (a gRPC framework implementation in Rust).
 It is a worker centric design which allows overcommitment of resources, multiple queue implementations,
 support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. 
 Deployment across the servers is supported via ansible. 
+It can even run on edge devices like Jetson, hell yeah!. 
 
 Modular design of Ilúvatar allows fast paced development and experimentation. For instance, 
 adding a new Queueing scheme is a matter of adding a rust module in 
@@ -47,6 +48,9 @@ Priority based queueing schemes using execution time and IAT.
   * code execution time based priority queue - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap.rs)
   * earliest virtual deadline first based priority queue using code execution time to decide the deadline - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_ed.rs)  
   * most frequent function first based priority queue using IAT - [implementation](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/invocation/queueing/minheap_iat.rs) 
+
+Added support to run the control plane on Jetson Orin. It involved rebuilding the functions the arm platform, adding support 
+to capture utilization logs from the jtop utility and setting up 1 TB NVMe to enable hosting large number of containers. 
 
 ### References
 

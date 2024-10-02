@@ -19,11 +19,12 @@ bibliography: references.bib
 
 [Github Repository](https://github.com/abrehman94/Linux-Scripting-Tutorial)
 
-Developed a tutorial that introduces Ubuntu 20.02 to the High school 
-students. Starting from the basics of Linux, GUI interface to the 
-terminal environment. Then moving on to the bash scripting. 
-The tutorial is designed to be interactive and hands-on with an 
-exercise to sort songs by author name.
+I've created a tutorial that introduces high school students to Ubuntu 20.04, 
+starting with the fundamentals of Linux using a graphical user interface (GUI) 
+and progressing to the terminal environment. 
+We then delve into bash scripting. 
+The tutorial is designed to be interactive and hands-on, 
+culminating in an exercise where students sort songs by author name.
 
 # Memories 
 

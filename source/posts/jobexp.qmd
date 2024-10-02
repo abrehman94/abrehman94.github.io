@@ -1,0 +1,41 @@
+---
+title: "Experience as an embedded systems developer"
+date: 2024-10-02
+author:
+  - name: Abdul Rehman 
+    orcid: 0009-0005-1568-8068 
+    email: abrehman@iu.edu 
+    affiliation:
+      - name: Indiana University Bloomington 
+        city: Bloomington 
+        state: IN 
+        url: luddy.indiana.edu 
+description: >
+    A summary of experiences as an embedded systems developer. 
+bibliography: references.bib
+---
+
+Most of my experience as an embedded systems developer has been focused on virtualization 
+and type 1 hypervisors. 
+I have had the chance to work on cutting edge hardware (at the time) Intel Embedded Processors Elkhartlake (2021) and 
+reslove many interesting issues related to ACPI, AHCI-virt, NVMe-virt etc.
+On the hypervisor side I really enjoyed adding support for various virtualization solutions. 
+
+**VT-d DMAR/IOMU driver:** Added support for IOMU driver to allow device isolation and memory remapping for the VM.  
+
+**UEFI virtualization:** Developed infrastructure to provide virtual UEFI interface for guest VMs. 
+Designed and developed caching solution for non-volatile variables to avoid SMI generation.
+
+**Intel Graphics Device Driver(Linux-i915):** 
+Ported Linux device driver (i915) for Intel Graphics Device to a UEFI driver. 
+It allowed early graphics for Linux and Windows guests - stuff like splash screen and recovery mode menus. 
+
+**NVMe virtualization:**
+Contributed to the design and development of the infrastructure specifically interrupt handling and I/O queue segregation.
+Interrupt handling infrastructure via PCI MSI-X capability included adding MMIO emulation support trap and 
+emulate the capabilty region and provide virtual MSI-X region for the virtualized devices.
+Developed a paravirtualized client by modifying Linux driver for NVMe to test paravirtualized
+interface of the solution. 
+
+**QT Framework:** Ported QT framework 5.4 to Nucleus RTOS. 
+

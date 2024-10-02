@@ -71,26 +71,9 @@ My day to day tools
   * python
   * rust  
 
-# Beyond work
+# About Me 
 
-I am someone who can stare at a tree for long hours, thinking about how each molecule of 
-air works together to move energy from one place to another moving the leaves in a way 
-that can be mathematically determined yet it seems so undeterministic. 
-How are we no different from a fish living in a sea, 
-witnessing the same effect of energy on a seaweed, 
-yet different enough to reason about it and develop such a deep understanding of it, 
-so much so that we can use it for a completely different purpose.
-
-I love to spend time with my family, drive and hike. 
-
-<!--
-  - id: tools-listings
-    contents: 
-      - "tools/*.qmd"
-
-::: {#tools-listings}
-:::
-
--->
-
-
+I love to spend time with my family, driving and hiking.
+I run 3 miles three times a week.
+I like to sit staring at a tree for long hours, thinking about how each molecule of air works together to move energy from one place to another, moving the leaves in a way that can be mathematically determined yet seems so undeterministic.
+How we are no different from a fish living in a sea, witnessing the same effect of energy on a seaweed, yet different enough to reason about it and develop such a deep understanding of it, so much so that we can use it for a completely different purpose.

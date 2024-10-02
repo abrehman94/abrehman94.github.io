@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="metadata-driven-policy" class="level1">
 <h1>Metadata Driven Policy</h1>
-<p>The idea is that the metadata of the functions available to the Control Plane can be used to hint the CPU scheduler to make better scheduling decisions. With the help of SchedExt framework, we can develop sophisticated scheduling policies that are tightly integrated with the control plane.</p>
+<p>The idea is to take advantage of tight coupling of Control Plane and the scheduling policy by using metadata of the functions to hint the CPU scheduler to make better scheduling decisions.</p>
 <p><a href="https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c">Proof of Concept:</a> A task size interval assignment policy that is driven by execution time of the functions while enforcing locality works better for&nbsp; short single threaded functions as opposed to long multi threaded functions. This POC divides the available cores into buckets and assigns function to <a href="https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c#L135">each bucket</a> based on the historical end to end time of the function. Metadata is shared between the control plane and the schedext scheduler using a <a href="https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_bpf_library">pinned eBPF map</a>.</p>
 
 
