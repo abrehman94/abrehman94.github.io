@@ -24,7 +24,7 @@ listing:
 
 Ph.D. student with 8+ years of systems software development (6 years of full time industrial position) 
 and systems research (2 years) experience. 
-During my time in industry I have worked on UEFI firmware, Nucleus RTOS, NVMe virtualization and GPU virtualization.
+During my time in industry I have worked on UEFI firmware, Nucleus RTOS and NVMe virtualization.
 
 For past two years, my focus has been on serverless computing, linux scheduling and Machine Learning. 
 I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox. 
