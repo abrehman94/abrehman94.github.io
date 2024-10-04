@@ -1,5 +1,5 @@
 ---
-title: "Targeted Scheduling for a serverless platform"
+title: "Targeted CPU Scheduling for a serverless platform"
 date: 2024-09-27
 author:
   - name: Abdul Rehman 
