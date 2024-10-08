@@ -19,7 +19,7 @@ bibliography: references.bib
 
 [Github Repository](https://github.com/abrehman94/Linux-Scripting-Tutorial)
 
-I've created a tutorial that introduces high school students to Ubuntu 20.04, 
+I have created a tutorial that introduces high school students to Ubuntu 20.04, 
 starting with the fundamentals of Linux using a graphical user interface (GUI) 
 and progressing to the terminal environment. 
 We then delve into bash scripting. 

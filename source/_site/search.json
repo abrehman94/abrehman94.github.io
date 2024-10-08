@@ -138,7 +138,7 @@
     "href": "posts/luddy_summer_school.html",
     "title": "Luddy Summer School 2024",
     "section": "",
-    "text": "Overview\nGithub Repository\nI’ve created a tutorial that introduces high school students to Ubuntu 20.04, starting with the fundamentals of Linux using a graphical user interface (GUI) and progressing to the terminal environment. We then delve into bash scripting. The tutorial is designed to be interactive and hands-on, culminating in an exercise where students sort songs by author name.\n\n\nMemories\n |  |\n |\n |",
+    "text": "Overview\nGithub Repository\nI have created a tutorial that introduces high school students to Ubuntu 20.04, starting with the fundamentals of Linux using a graphical user interface (GUI) and progressing to the terminal environment. We then delve into bash scripting. The tutorial is designed to be interactive and hands-on, culminating in an exercise where students sort songs by author name.\n\n\nMemories\n |  |\n |\n |",
     "crumbs": [
       "Blog Posts",
       "Luddy Summer School 2024"
