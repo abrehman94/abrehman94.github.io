@@ -169,6 +169,7 @@ Guidelines
 
   * scripting 
     * always try to use absolute paths (helps in running scripts from anywhere)
+    * everything should be written in a script - just use run.sh to execute 
 
 ## Solving problems as they occur
 
