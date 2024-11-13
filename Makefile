@@ -8,6 +8,8 @@ build:
 	git push origin 
 
 preview:
-	cd $(src) && quarto preview --port 8074
+	cd $(src) && quarto preview --no-browser --port 8074
+
+
 
 

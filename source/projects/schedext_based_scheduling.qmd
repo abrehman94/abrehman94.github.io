@@ -42,8 +42,9 @@ See [project Ilúvatar](iluvatar.qmd) for details about the control plane.
 
 # Metadata Driven Policy      
 
-The idea is to take advantage of tight coupling of Control Plane and the scheduling policy by using 
-metadata of the functions to hint the CPU scheduler to make better scheduling decisions.
+The idea is to take advantage of tight coupling between Control Plane and the scheduling policy. 
+In essence the policy is driven by the metadata of the functions thereby taking advantage of the 
+extra information available at the higher layers.
 
 [Proof of Concept:](https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c)
 A task size interval assignment policy that is driven by 
