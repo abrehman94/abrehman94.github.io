@@ -32,7 +32,7 @@ For past two years, my focus has been on serverless computing, linux scheduling 
 I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox. 
 I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
 
-I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myraid of interconnected components. 
+I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myriad of interconnected components. 
 
   * [CV](./data/resume.pdf)
   * [Github Profile](https://github.com/abrehman94)
