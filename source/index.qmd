@@ -30,7 +30,7 @@ I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox o
 I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
 I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myriad of interconnected components. 
 
-Lines of code written in different languages. 
+Lines of code written. 
 
   * Rust: >2k   
   * Python3: >10k  
