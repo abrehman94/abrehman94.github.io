@@ -22,13 +22,14 @@ listing:
     image-height: 0px
 ---
 
-# Abdul Rehman
+# Abdul Rehman 
 
-Ph.D. student with 8+ years of systems research (2 years) and systems software development (6 years) experience. 
-My recent focus has been on serverless computing, linux scheduling and Machine Learning. 
-I have added Rust, eBPF and deep learning approach using pyTorch to my toolbox on top of C/C++, firmware, virtualization and Linux kernel experience. 
-I am working under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
-I enjoy diving deep into complex problems, trying to find the last ounce of performance boost in myriad of interconnected components. 
+Ph.D. student with over eight years of experience in systems research (two years) and software development (six years). 
+I have worked on a wide range of projects, from firmware to cloud computing. 
+Notable contributions include UEFI graphics driver development, NVMe virtualization, and my recent work on custom Linux CPU scheduling for a serverless platform. 
+I have extensive experience writing Rust, eBPF, Python, and C code.
+
+I am pursuing my Ph.D. under the guidance of [Prateek Sharma](https://cgi.luddy.indiana.edu/~prateeks) at Indiana University Bloomington.
 
 Lines of code written. 
 
@@ -41,20 +42,20 @@ Links.
   * [CV](./data/resume.pdf)
   * [Github Profile](https://github.com/abrehman94)
   * [LinkedIn](https://www.linkedin.com/in/abdulrehman010/)
+
 <!--
   * [Google Scholar Profile](https://scholar.google.com/citations?user=8LD5hmQAAAAJ&hl=en&oi=sra)
+    **Seeking a Summer 2025 Internship in the area of Systems (eBPF, Rust, Linux Kernel, Cloud, Performance).**
 -->
-
-
-**Seeking a Summer 2025 Internship in the area of Systems (eBPF, Rust, Linux Kernel, Cloud, Performance).**
 
 # Research Focus
 
-Currently, I am trying to improve the performance of a 
-[serverless platform](https://github.com/COS-IN/iluvatar-faas) 
-using eBPF based [sched_ext](https://github.com/sched-ext/scx) framework to implement custom scheduling policy that would 
-take advantage of the historical characteristics of the serverless functions, tight coupling with the control plane and 
-machine learning. 
+I am working on tightly integrating the [serverless platform](https://github.com/COS-IN/iluvatar-faas) with CPU scheduling 
+beyond the conventional control group interface. 
+The conventional approach overlooks microsecond-scale issues such as neighbor effects and cache pollution. 
+By revamping the interface with shared eBPF maps and custom scheduling domain construction, 
+the control plane can continue making coarse-grained adjustments while a custom scheduler addresses these finer-grained performance challenges. 
+This has been made possible by the recently introduced [sched_ext](https://github.com/sched-ext/scx) framework in Linux 6.12.
 
 # Publications 
 
@@ -73,7 +74,7 @@ machine learning.
 
 # Tools
 
-My day to day tools  
+My day to day tools 
 
   * tmux
   * vim
@@ -85,7 +86,15 @@ My day to day tools
 
 # About Me 
 
+I enjoy hiking and driving. I run three miles three times a week.
+I find solace in coding and reading.
+I can't help but ask questions—I'm curious about everything.
+Oh boy, it can get you into trobule!
+
+<!--
 I love to spend time with my family, driving and hiking.
 I run three miles three times a week.
 I like to sit staring at a tree for long hours, thinking about how each molecule of air works together to move energy from one place to another, moving the leaves in a way that can be mathematically determined yet seems so undeterministic.
 How we are no different from a fish living in a sea, witnessing the same effect of energy on a seaweed, yet different enough to reason about it and develop such a deep understanding of it, so much so that we can use it for a completely different purpose.
+-->
+
