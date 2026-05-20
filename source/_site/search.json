@@ -1,59 +1,86 @@
 [
   {
-    "objectID": "content.html",
-    "href": "content.html",
-    "title": "Contributions",
-    "section": "",
-    "text": "Contributions\nbug-fix rust deserialization\nsys-parser - support for pid"
-  },
-  {
-    "objectID": "projects/schedext_based_scheduling.html",
-    "href": "projects/schedext_based_scheduling.html",
-    "title": "Targeted CPU Scheduling for a serverless platform",
-    "section": "",
-    "text": "SchedExt Framework\nAs of Sep 2024, SchedExt is a new framework which will become part of Linux 6.12 kernel. It introduces a new scheduling class at the same priority level as EEVDF which allows BPF programs to modify the scheduling decisions. It’s possible to write a BPF program which can register following callbacks (only few basic ones are mentioned).\n  * init/exit_task      - a new task is created or an existing task is destroyed\n  * select_cpu          - select a CPU for a task\n  * dispatch            - a task needs to be dispatched to local DSQs of the SchedExt core\n  * init/exit_scheduler - a new scheduler is created or an existing scheduler is destroyed\nBy virtue of these callbacks, any arbitrary scheduling policy can be implemented.\nImportant gotos:\n\nSchedExt Kernel Documentation\nSample SchedExt Schedulers\nSchedExt Kernel Releases\n\n\n\nServerless Control Plane\nProof of concept is developed on a research centric serverless control plane that is implemented in Rust. See project Ilúvatar for details about the control plane.\n\n\nMetadata Driven Policy\nThe idea is to take advantage of tight coupling between Control Plane and the scheduling policy. In essence the policy is driven by the metadata of the functions thereby taking advantage of the extra information available at the higher layers.\nProof of Concept: A task size interval assignment policy that is driven by execution time of the functions while enforcing locality works better for  short single threaded functions as opposed to long multi threaded functions. This POC divides the available cores into buckets and assigns function to each bucket based on the historical end to end time of the function. Metadata is shared between the control plane and the schedext scheduler using a pinned eBPF map.",
-    "crumbs": [
-      "Projects",
-      "Targeted CPU Scheduling for a serverless platform"
-    ]
-  },
-  {
-    "objectID": "projects/iluvatar.html",
-    "href": "projects/iluvatar.html",
-    "title": "Iluvatar a Fast Serverless Control Plane written in Rust",
-    "section": "",
-    "text": "About the project\nIt’s a serverless platform developed with the intent to ease research and provide deterministic results. Whole platform is written in Rust (Safe and Reliable language for Systems development) using tonic (a gRPC framework implementation in Rust).\nIt is a worker centric design which allows overcommitment of resources, multiple queue implementations, support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. Deployment across the servers is supported via ansible. It can even run on edge devices like Jetson, hell yeah!.\nModular design of Ilúvatar allows fast paced development and experimentation. For instance, adding a new Queueing scheme is a matter of adding a rust module in queueing directory.\nPlease see our paper(2023) for more details.\n\n\nMy contributions\nFrom 2022 to 2023, my contributions to this project has been to add support for capturing characteristics of functions and develop different queueing schemes.\nFunction Characteristics: Hashmap of function characteristics like end to end time, inter arrival time (IAT) and code execution time on the worker.\nQueueing Schemes: Priority based queueing schemes using execution time and IAT.\n\ncode execution time based priority queue - implementation\nearliest virtual deadline first based priority queue using code execution time to decide the deadline - implementation\n\nmost frequent function first based priority queue using IAT - implementation\n\nI added support for running the control plane on Jetson Orin. It involved rebuilding the functions for ARM platform, capture utilization logs from the jtop utility and setting up 1 TB NVMe on the device to enable hosting large number of containers.\n\nReferences\n\n\nFuerst, Alexander, Abdul Rehman, and Prateek Sharma. 2023. “Ilúvatar: A Fast Control Plane for Serverless Computing.” In Proceedings of the 32nd International Symposium on High-Performance Parallel and Distributed Computing, 267–80. HPDC ’23. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/3588195.3592995.",
-    "crumbs": [
-      "Projects",
-      "Iluvatar a Fast Serverless Control Plane written in Rust"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "tools/using_vim.html",
+    "href": "tools/using_vim.html",
+    "title": "Using VIM",
     "section": "",
     "text": "About this site"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Abdul Rehman",
+    "objectID": "projects/schedext_based_scheduling.html",
+    "href": "projects/schedext_based_scheduling.html",
+    "title": "Serverless platform driven CPU loadbalancing",
     "section": "",
-    "text": "Abdul Rehman\nPh.D. student with over eight years of experience in systems research (two years) and software development (six years). I have worked on a wide range of projects, from firmware to cloud computing. Notable contributions include UEFI graphics driver development, NVMe virtualization, and my recent work on custom Linux CPU scheduling for a serverless platform. I have extensive experience writing Rust, eBPF, Python, and C code.\nI am pursuing my Ph.D. under the guidance of Prateek Sharma at Indiana University Bloomington.\nLines of code written.\n\nRust: &gt;2k\n\nPython3: &gt;10k\n\nC/C++: &gt;10k\n\nLinks.\n\nCV\nGithub Profile\nLinkedIn\n\n\n\n\nResearch Focus\nI am working on tightly integrating the serverless platform with CPU scheduling beyond the conventional control group interface. The conventional approach overlooks microsecond-scale issues such as neighbor effects and cache pollution. By revamping the interface with shared eBPF maps and custom scheduling domain construction, the control plane can continue making coarse-grained adjustments while a custom scheduler addresses these finer-grained performance challenges. This has been made possible by the recently introduced sched_ext framework in Linux 6.12.\n\n\nPublications\n\n\n[1] Fuerst, A., Rehman, A., et al. 2023. Ilúvatar: A fast control plane for serverless computing. Proceedings of the 32nd international symposium on high-performance parallel and distributed computing (New York, NY, USA, 2023), 267–280.\n\n\n\n\nProjects\n\n\n\n\n\n\n\n\n\n\nTargeted CPU Scheduling for a serverless platform\n\n\n\n\n\nMy recent work on implementing custom cpu scheduling (using SchedExt framework) to improve the performance of a serverless platform (written in Rust). \n\n\n\n\n\nSep 27, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nEdge-IoT Analytics-Box (Extensible Data Analytics System)\n\n\n\n\n\nA data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin. \n\n\n\n\n\nJan 24, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nIluvatar a Fast Serverless Control Plane written in Rust\n\n\n\n\n\nDuring my first year of Ph.D I worked on a radical approach to serverless computing. A monolithic, worker centric platform for serverless computing. \n\n\n\n\n\nJun 1, 2023\n\n\nAbdul Rehman\n\n\n\n\n\n\nNo matching items\n\n\n\n\nBlog Posts\n\n\n\n\n\n\n\n\n\n\nExperience as an embedded systems developer\n\n\n\n\n\nA summary of experiences as an embedded systems developer. \n\n\n\n\n\nOct 2, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nLuddy Summer School 2024\n\n\n\n\n\nA tutorial introducing Linux and Bash Scripting to High School students. \n\n\n\n\n\nJun 13, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nDesign Philosophy for Systems\n\n\n\n\n\nMy philosophy on designing systems. \n\n\n\n\n\nDec 13, 2022\n\n\nAbdul Rehman\n\n\n\n\n\n\nNo matching items\n\n\n\n\nTools\nMy day to day tools\n\ntmux\nvim\nssh\nbash\neBPF\npython\nrust\n\n\n\nAbout Me\nI enjoy hiking and driving. I run three miles three times a week. I find solace in coding and reading. I can’t help but ask questions—I’m curious about everything. Oh boy, it can get you into trobule!",
+    "text": "Code references\n\nServerless platform driven loadbalancing policies (Rust): github repo\nSCX based custom CPU scheduler (Rust + eBPF): github repo\n\n\n\nPaper\nlink",
     "crumbs": [
-      "Home"
+      "Projects",
+      "Serverless platform driven CPU loadbalancing"
     ]
   },
   {
-    "objectID": "posts/jobexp.html",
-    "href": "posts/jobexp.html",
-    "title": "Experience as an embedded systems developer",
+    "objectID": "projects/dataanalytics.html",
+    "href": "projects/dataanalytics.html",
+    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
     "section": "",
-    "text": "Most of my experience as an embedded systems developer has been focused on virtualization and type 1 hypervisors. I have had the chance to work on cutting edge hardware (at the time) Intel Embedded Processor Elkhartlake (2021) and reslove many interesting issues related to ACPI, AHCI-virt, NVMe-virt etc. On the hypervisor side I really enjoyed adding support for various virtualization solutions.\nVT-d DMAR/IOMU driver: Added support for IOMMU driver to allow device isolation and memory remapping of the VM.\nUEFI virtualization: Developed infrastructure to provide virtual UEFI interface for guest VMs. Designed and developed caching solution for non-volatile variables to avoid SMI generation.\nIntel Graphics Device Driver(Linux-i915): Ported Linux device driver (i915) for Intel Graphics Device to a UEFI driver. It allowed early graphics for Linux and Windows guests - stuff like splash screen and recovery mode menus.\nNVMe virtualization: Contributed to the design and development of the infrastructure. I was responsible for interrupt handling and I/O queue segregation components. Interrupt handling component was implemented using MMIO trap and emulation of PCI MSI-X capability. To verify the paravirtualized implementation, I modified the Linux driver for NVMe into a paravirtualized client.\nQT Framework: Ported QT framework 5.4 to Nucleus RTOS.",
+    "text": "Overview\nArchitecture\nPresentation\nPerformance Results\nRepository Layout\nGetting Started\n\n\n\n\nGithub Repository\nEdge-IoT-Analytics-Box is a data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin.\n\n\n\n\n\n\n\n\n\n\n\nFor 54 sensors being predicted using arima model and RNN model\n\nNetwork bandwidth consumption on Jetson ~800 Kbytes per sec\nCPU utilization on Jetson ~25 %\nGPU utilization ~40 %\nInfluxDB storage increases by ~7 Kbytes per second\n\nit would take 866 days to fill up 500 Gb of space which is ~2.3 years\n\n\nPlease see report for more details.\n\n\n\nEach module has it’s own directory.\n./tserve (Torch Serve): Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models.\n./analytics (Framework): Framework to setup a data analytics pipeline using models deployed on torch serve.\n./streaming_service (Data Fetching): Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.\n\n\n\n\nsetup InfluxDB on a server using the instructions in streaming_service/README.md\nonce data is streaming to the DB\n\nsetup torch serve on a Jetson Orin using the instructions in tserve/README.md\nsetup an analytics pipeline using the instructions in analytics/README.md",
+    "crumbs": [
+      "Projects",
+      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+    ]
+  },
+  {
+    "objectID": "projects/dataanalytics.html#overview",
+    "href": "projects/dataanalytics.html#overview",
+    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "section": "",
+    "text": "Github Repository\nEdge-IoT-Analytics-Box is a data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin.",
+    "crumbs": [
+      "Projects",
+      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+    ]
+  },
+  {
+    "objectID": "projects/dataanalytics.html#performance-results",
+    "href": "projects/dataanalytics.html#performance-results",
+    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "section": "",
+    "text": "For 54 sensors being predicted using arima model and RNN model\n\nNetwork bandwidth consumption on Jetson ~800 Kbytes per sec\nCPU utilization on Jetson ~25 %\nGPU utilization ~40 %\nInfluxDB storage increases by ~7 Kbytes per second\n\nit would take 866 days to fill up 500 Gb of space which is ~2.3 years\n\n\nPlease see report for more details.",
+    "crumbs": [
+      "Projects",
+      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+    ]
+  },
+  {
+    "objectID": "projects/dataanalytics.html#repository-layout",
+    "href": "projects/dataanalytics.html#repository-layout",
+    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "section": "",
+    "text": "Each module has it’s own directory.\n./tserve (Torch Serve): Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models.\n./analytics (Framework): Framework to setup a data analytics pipeline using models deployed on torch serve.\n./streaming_service (Data Fetching): Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.",
+    "crumbs": [
+      "Projects",
+      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+    ]
+  },
+  {
+    "objectID": "projects/dataanalytics.html#getting-started",
+    "href": "projects/dataanalytics.html#getting-started",
+    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "section": "",
+    "text": "setup InfluxDB on a server using the instructions in streaming_service/README.md\nonce data is streaming to the DB\n\nsetup torch serve on a Jetson Orin using the instructions in tserve/README.md\nsetup an analytics pipeline using the instructions in analytics/README.md",
+    "crumbs": [
+      "Projects",
+      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+    ]
+  },
+  {
+    "objectID": "posts/luddy_summer_school.html",
+    "href": "posts/luddy_summer_school.html",
+    "title": "Luddy Summer School 2024",
+    "section": "",
+    "text": "Overview\nGithub Repository\nI have created a tutorial that introduces high school students to Ubuntu 20.04, starting with the fundamentals of Linux using a graphical user interface (GUI) and progressing to the terminal environment. We then delve into bash scripting. The tutorial is designed to be interactive and hands-on, culminating in an exercise where students sort songs by author name.\n\n\nMemories\n |  |\n |\n |",
     "crumbs": [
       "Blog Posts",
-      "Experience as an embedded systems developer"
+      "Luddy Summer School 2024"
     ]
   },
   {
@@ -134,29 +161,39 @@
     ]
   },
   {
-    "objectID": "posts/luddy_summer_school.html",
-    "href": "posts/luddy_summer_school.html",
-    "title": "Luddy Summer School 2024",
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "Contributions",
     "section": "",
-    "text": "Overview\nGithub Repository\nI have created a tutorial that introduces high school students to Ubuntu 20.04, starting with the fundamentals of Linux using a graphical user interface (GUI) and progressing to the terminal environment. We then delve into bash scripting. The tutorial is designed to be interactive and hands-on, culminating in an exercise where students sort songs by author name.\n\n\nMemories\n |  |\n |\n |",
-    "crumbs": [
-      "Blog Posts",
-      "Luddy Summer School 2024"
-    ]
+    "text": "Contributions\nbug-fix rust deserialization\nsys-parser - support for pid"
   },
   {
-    "objectID": "tools/using_vim.html",
-    "href": "tools/using_vim.html",
-    "title": "Using VIM",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
     "text": "About this site"
   },
   {
-    "objectID": "projects/wip/dnn_top.html",
-    "href": "projects/wip/dnn_top.html",
-    "title": "DNNTop: Deep Neural Network based Power Model of the system and top utility",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Abdul Rehman",
     "section": "",
-    "text": "publication\nidentify the contributions to the project\n\nqueueing infrastructure\ncharacteristics map"
+    "text": "Abdul Rehman\nPh.D. student with over eight years of experience in systems research (two years) and software development (six years). I have worked on a wide range of projects, from firmware to cloud computing. Notable contributions include UEFI graphics driver development, NVMe virtualization, and my recent work on custom Linux CPU scheduling for a serverless platform. I have extensive experience writing Rust, eBPF, Python, and C code.\nI am pursuing my Ph.D. under the guidance of Prateek Sharma at Indiana University Bloomington.\nLines of code written.\n\nRust: &gt;2k\n\nPython3: &gt;10k\n\nC/C++: &gt;10k\n\nLinks.\n\nCV\nGithub Profile\nLinkedIn\n\n\n\n\nResearch Focus\nI am working on tightly integrating the serverless platform with CPU scheduling beyond the conventional control group interface. The conventional approach overlooks microsecond-scale issues such as neighbor effects and cache pollution. By revamping the interface with shared eBPF maps and custom scheduling domain construction, the control plane can continue making coarse-grained adjustments while a custom scheduler addresses these finer-grained performance challenges. This has been made possible by the recently introduced sched_ext framework in Linux 6.12.\n\n\nPublications\n\n\n[1] Fuerst, A., Rehman, A., et al. 2023. Ilúvatar: A fast control plane for serverless computing. Proceedings of the 32nd international symposium on high-performance parallel and distributed computing (New York, NY, USA, 2023), 267–280.\n\n\n\n\nProjects\n\n\n\n\n\n\n\n\n\n\nServerless platform driven CPU loadbalancing\n\n\n\n\n\nAn approach to group tasks of frequent functions using a custom scheduler. \n\n\n\n\n\nSep 27, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nEdge-IoT Analytics-Box (Extensible Data Analytics System)\n\n\n\n\n\nA data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin. \n\n\n\n\n\nJan 24, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nIluvatar a Fast Serverless Control Plane written in Rust\n\n\n\n\n\nDuring my first year of Ph.D I worked on a radical approach to serverless computing. A monolithic, worker centric platform for serverless computing. \n\n\n\n\n\nJun 1, 2023\n\n\nAbdul Rehman\n\n\n\n\n\n\nNo matching items\n\n\n\n\nBlog Posts\n\n\n\n\n\n\n\n\n\n\nExperience as an embedded systems developer\n\n\n\n\n\nA summary of experiences as an embedded systems developer. \n\n\n\n\n\nOct 2, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nLuddy Summer School 2024\n\n\n\n\n\nA tutorial introducing Linux and Bash Scripting to High School students. \n\n\n\n\n\nJun 13, 2024\n\n\nAbdul Rehman\n\n\n\n\n\n\n\n\n\n\n\n\nDesign Philosophy for Systems\n\n\n\n\n\nMy philosophy on designing systems. \n\n\n\n\n\nDec 13, 2022\n\n\nAbdul Rehman\n\n\n\n\n\n\nNo matching items\n\n\n\n\nTools\nMy day to day tools\n\ntmux\nvim\nssh\nbash\neBPF\npython\nrust\n\n\n\nAbout Me\nI enjoy hiking and driving. I run three miles three times a week. I find solace in coding and reading. I can’t help but ask questions—I’m curious about everything. Oh boy, it can get you into trobule!",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "posts/jobexp.html",
+    "href": "posts/jobexp.html",
+    "title": "Experience as an embedded systems developer",
+    "section": "",
+    "text": "Most of my experience as an embedded systems developer has been focused on virtualization and type 1 hypervisors. I have had the chance to work on cutting edge hardware (at the time) Intel Embedded Processor Elkhartlake (2021) and reslove many interesting issues related to ACPI, AHCI-virt, NVMe-virt etc. On the hypervisor side I really enjoyed adding support for various virtualization solutions.\nVT-d DMAR/IOMU driver: Added support for IOMMU driver to allow device isolation and memory remapping of the VM.\nUEFI virtualization: Developed infrastructure to provide virtual UEFI interface for guest VMs. Designed and developed caching solution for non-volatile variables to avoid SMI generation.\nIntel Graphics Device Driver(Linux-i915): Ported Linux device driver (i915) for Intel Graphics Device to a UEFI driver. It allowed early graphics for Linux and Windows guests - stuff like splash screen and recovery mode menus.\nNVMe virtualization: Contributed to the design and development of the infrastructure. I was responsible for interrupt handling and I/O queue segregation components. Interrupt handling component was implemented using MMIO trap and emulation of PCI MSI-X capability. To verify the paravirtualized implementation, I modified the Linux driver for NVMe into a paravirtualized client.\nQT Framework: Ported QT framework 5.4 to Nucleus RTOS.",
+    "crumbs": [
+      "Blog Posts",
+      "Experience as an embedded systems developer"
+    ]
   },
   {
     "objectID": "projects/artifacts/links.html",
@@ -166,58 +203,21 @@
     "text": "Links\nEditable Link for the Architecture Diagram"
   },
   {
-    "objectID": "projects/dataanalytics.html",
-    "href": "projects/dataanalytics.html",
-    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "objectID": "projects/iluvatar.html",
+    "href": "projects/iluvatar.html",
+    "title": "Iluvatar a Fast Serverless Control Plane written in Rust",
     "section": "",
-    "text": "Overview\nArchitecture\nPresentation\nPerformance Results\nRepository Layout\nGetting Started\n\n\n\n\nGithub Repository\nEdge-IoT-Analytics-Box is a data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin.\n\n\n\n\n\n\n\n\n\n\n\nFor 54 sensors being predicted using arima model and RNN model\n\nNetwork bandwidth consumption on Jetson ~800 Kbytes per sec\nCPU utilization on Jetson ~25 %\nGPU utilization ~40 %\nInfluxDB storage increases by ~7 Kbytes per second\n\nit would take 866 days to fill up 500 Gb of space which is ~2.3 years\n\n\nPlease see report for more details.\n\n\n\nEach module has it’s own directory.\n./tserve (Torch Serve): Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models.\n./analytics (Framework): Framework to setup a data analytics pipeline using models deployed on torch serve.\n./streaming_service (Data Fetching): Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.\n\n\n\n\nsetup InfluxDB on a server using the instructions in streaming_service/README.md\nonce data is streaming to the DB\n\nsetup torch serve on a Jetson Orin using the instructions in tserve/README.md\nsetup an analytics pipeline using the instructions in analytics/README.md",
+    "text": "About the project\nIt’s a serverless platform developed with the intent to ease research and provide deterministic results. Whole platform is written in Rust (Safe and Reliable language for Systems development) using tonic (a gRPC framework implementation in Rust).\nIt is a worker centric design which allows overcommitment of resources, multiple queue implementations, support for different execution end points (CPU, GPU) and allows simulating workload instead of actual execution. Deployment across the servers is supported via ansible. It can even run on edge devices like Jetson, hell yeah!.\nModular design of Ilúvatar allows fast paced development and experimentation. For instance, adding a new Queueing scheme is a matter of adding a rust module in queueing directory.\nPlease see our paper(2023) for more details.\n\n\nMy contributions\nFrom 2022 to 2023, my contributions to this project has been to add support for capturing characteristics of functions and develop different queueing schemes.\nFunction Characteristics: Hashmap of function characteristics like end to end time, inter arrival time (IAT) and code execution time on the worker.\nQueueing Schemes: Priority based queueing schemes using execution time and IAT.\n\ncode execution time based priority queue - implementation\nearliest virtual deadline first based priority queue using code execution time to decide the deadline - implementation\n\nmost frequent function first based priority queue using IAT - implementation\n\nI added support for running the control plane on Jetson Orin. It involved rebuilding the functions for ARM platform, capture utilization logs from the jtop utility and setting up 1 TB NVMe on the device to enable hosting large number of containers.\n\nReferences\n\n\nFuerst, Alexander, Abdul Rehman, and Prateek Sharma. 2023. “Ilúvatar: A Fast Control Plane for Serverless Computing.” In Proceedings of the 32nd International Symposium on High-Performance Parallel and Distributed Computing, 267–80. HPDC ’23. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/3588195.3592995.",
     "crumbs": [
       "Projects",
-      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
+      "Iluvatar a Fast Serverless Control Plane written in Rust"
     ]
   },
   {
-    "objectID": "projects/dataanalytics.html#overview",
-    "href": "projects/dataanalytics.html#overview",
-    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
+    "objectID": "projects/wip/dnn_top.html",
+    "href": "projects/wip/dnn_top.html",
+    "title": "DNNTop: Deep Neural Network based Power Model of the system and top utility",
     "section": "",
-    "text": "Github Repository\nEdge-IoT-Analytics-Box is a data analytics system that captures and analyzes data in real time. The system is designed to be deployed on edge devices like Jetson Orin.",
-    "crumbs": [
-      "Projects",
-      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
-    ]
-  },
-  {
-    "objectID": "projects/dataanalytics.html#performance-results",
-    "href": "projects/dataanalytics.html#performance-results",
-    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
-    "section": "",
-    "text": "For 54 sensors being predicted using arima model and RNN model\n\nNetwork bandwidth consumption on Jetson ~800 Kbytes per sec\nCPU utilization on Jetson ~25 %\nGPU utilization ~40 %\nInfluxDB storage increases by ~7 Kbytes per second\n\nit would take 866 days to fill up 500 Gb of space which is ~2.3 years\n\n\nPlease see report for more details.",
-    "crumbs": [
-      "Projects",
-      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
-    ]
-  },
-  {
-    "objectID": "projects/dataanalytics.html#repository-layout",
-    "href": "projects/dataanalytics.html#repository-layout",
-    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
-    "section": "",
-    "text": "Each module has it’s own directory.\n./tserve (Torch Serve): Contains code to deploy torch serve on Jetson Orin along with scripts for building and delploying models.\n./analytics (Framework): Framework to setup a data analytics pipeline using models deployed on torch serve.\n./streaming_service (Data Fetching): Contains code to setup data streaming from sensors to InfluxDB, including scripts to setup InfluxDB.",
-    "crumbs": [
-      "Projects",
-      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
-    ]
-  },
-  {
-    "objectID": "projects/dataanalytics.html#getting-started",
-    "href": "projects/dataanalytics.html#getting-started",
-    "title": "Edge-IoT Analytics-Box (Extensible Data Analytics System)",
-    "section": "",
-    "text": "setup InfluxDB on a server using the instructions in streaming_service/README.md\nonce data is streaming to the DB\n\nsetup torch serve on a Jetson Orin using the instructions in tserve/README.md\nsetup an analytics pipeline using the instructions in analytics/README.md",
-    "crumbs": [
-      "Projects",
-      "Edge-IoT Analytics-Box (Extensible Data Analytics System)"
-    ]
+    "text": "publication\nidentify the contributions to the project\n\nqueueing infrastructure\ncharacteristics map"
   }
 ]

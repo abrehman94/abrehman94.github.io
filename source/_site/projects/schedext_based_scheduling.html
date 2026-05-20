@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.546">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Abdul Rehman">
 <meta name="dcterms.date" content="2024-09-27">
-<meta name="description" content="My recent work on implementing custom cpu scheduling (using SchedExt framework) to improve the performance of a serverless platform (written in Rust).">
+<meta name="description" content="An approach to group tasks of frequent functions using a custom scheduler.">
 
-<title>Abdul Rehman - Targeted CPU Scheduling for a serverless platform</title>
+<title>Abdul Rehman - Serverless platform driven CPU loadbalancing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">Projects</a></li><li class="breadcrumb-item"><a href="../projects/schedext_based_scheduling.html">Targeted CPU Scheduling for a serverless platform</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">Projects</a></li><li class="breadcrumb-item"><a href="../projects/schedext_based_scheduling.html">Serverless platform driven CPU loadbalancing</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../projects/schedext_based_scheduling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Targeted CPU Scheduling for a serverless platform</span></a>
+ <span class="menu-text">Serverless platform driven CPU loadbalancing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -188,23 +188,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedext-framework" id="toc-schedext-framework" class="nav-link active" data-scroll-target="#schedext-framework">SchedExt Framework</a></li>
-  <li><a href="#serverless-control-plane" id="toc-serverless-control-plane" class="nav-link" data-scroll-target="#serverless-control-plane">Serverless Control Plane</a></li>
-  <li><a href="#metadata-driven-policy" id="toc-metadata-driven-policy" class="nav-link" data-scroll-target="#metadata-driven-policy">Metadata Driven Policy</a></li>
+  <li><a href="#code-references" id="toc-code-references" class="nav-link active" data-scroll-target="#code-references">Code references</a></li>
+  <li><a href="#paper" id="toc-paper" class="nav-link" data-scroll-target="#paper">Paper</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">Projects</a></li><li class="breadcrumb-item"><a href="../projects/schedext_based_scheduling.html">Targeted CPU Scheduling for a serverless platform</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">Projects</a></li><li class="breadcrumb-item"><a href="../projects/schedext_based_scheduling.html">Serverless platform driven CPU loadbalancing</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Targeted CPU Scheduling for a serverless platform</h1>
+<h1 class="title">Serverless platform driven CPU loadbalancing</h1>
 </div>
 
 <div>
   <div class="description">
-    <p>My recent work on implementing custom cpu scheduling (using SchedExt framework) to improve the performance of a serverless platform (written in Rust).</p>
+    <p>An approach to group tasks of frequent functions using a custom scheduler.</p>
   </div>
 </div>
 
@@ -242,29 +241,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="schedext-framework" class="level1">
-<h1>SchedExt Framework</h1>
-<p>As of Sep 2024, SchedExt is a new framework which will become part of <a href="https://lwn.net/SubscriberLink/991205/deed0c808397b420/">Linux 6.12 kernel</a>. It introduces a new scheduling class at the same priority level as EEVDF which allows BPF programs to modify the scheduling decisions. It’s possible to write a BPF program which can register following callbacks (only few basic ones are mentioned).</p>
-<pre><code>  * init/exit_task      - a new task is created or an existing task is destroyed
-  * select_cpu          - select a CPU for a task
-  * dispatch            - a task needs to be dispatched to local DSQs of the SchedExt core
-  * init/exit_scheduler - a new scheduler is created or an existing scheduler is destroyed</code></pre>
-<p>By virtue of these callbacks, any arbitrary scheduling policy can be implemented.</p>
-<p>Important gotos:</p>
+<section id="code-references" class="level1">
+<h1>Code references</h1>
 <ul>
-<li><a href="https://github.com/sched-ext/scx-kernel-releases/blob/sched_ext/for-6.12/Documentation/scheduler/sched-ext.rst">SchedExt Kernel Documentation</a></li>
-<li><a href="https://github.com/sched-ext/scx">Sample SchedExt Schedulers</a></li>
-<li><a href="https://github.com/sched-ext/scx-kernel-releases">SchedExt Kernel Releases</a></li>
+<li>Serverless platform driven loadbalancing policies (Rust): <a href="https://github.com/abrehman94/iluvatar-faas/blob/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/resources/fineloadbalancing.rs">github repo</a></li>
+<li>SCX based custom CPU scheduler (Rust + eBPF): <a href="https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_finesched/src">github repo</a></li>
 </ul>
 </section>
-<section id="serverless-control-plane" class="level1">
-<h1>Serverless Control Plane</h1>
-<p>Proof of concept is developed on a research centric serverless control plane that is implemented in Rust. See <a href="../projects/iluvatar.html">project Ilúvatar</a> for details about the control plane.</p>
-</section>
-<section id="metadata-driven-policy" class="level1">
-<h1>Metadata Driven Policy</h1>
-<p>The idea is to take advantage of tight coupling between Control Plane and the scheduling policy. In essence the policy is driven by the metadata of the functions thereby taking advantage of the extra information available at the higher layers.</p>
-<p><a href="https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c">Proof of Concept:</a> A task size interval assignment policy that is driven by execution time of the functions while enforcing locality works better for&nbsp; short single threaded functions as opposed to long multi threaded functions. This POC divides the available cores into buckets and assigns function to <a href="https://github.com/abrehman94/iluvatar-faas/blob/finescheduling/src/Il%C3%BAvatar/fs_policy_tsksz/src/bpf/main.bpf.c#L135">each bucket</a> based on the historical end to end time of the function. Metadata is shared between the control plane and the schedext scheduler using a <a href="https://github.com/abrehman94/iluvatar-faas/tree/finescheduling/src/Il%C3%BAvatar/iluvatar_bpf_library">pinned eBPF map</a>.</p>
+<section id="paper" class="level1">
+<h1>Paper</h1>
+<p><a href="">link</a></p>
 
 
 </section>
