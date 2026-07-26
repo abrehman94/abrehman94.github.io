@@ -11,7 +11,7 @@
     "href": "projects/schedext_based_scheduling.html",
     "title": "Serverless platform driven CPU loadbalancing",
     "section": "",
-    "text": "Code references\n\nServerless platform driven loadbalancing policies (Rust): github repo\nSCX based custom CPU scheduler (Rust + eBPF): github repo\n\n\n\nPaper\nlink",
+    "text": "Code references\n\nServerless platform driven loadbalancing policies (Rust): github repo\nSCX based custom CPU scheduler (Rust + eBPF): github repo\n\n\n\nPaper\n\nServerless_Platform_Driven_CPU_loadbalancing.pdf",
     "crumbs": [
       "Projects",
       "Serverless platform driven CPU loadbalancing"
