@@ -188,8 +188,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#code-references" id="toc-code-references" class="nav-link active" data-scroll-target="#code-references">Code references</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
   <li><a href="#paper" id="toc-paper" class="nav-link" data-scroll-target="#paper">Paper</a></li>
+  <li><a href="#code-references" id="toc-code-references" class="nav-link" data-scroll-target="#code-references">Code references</a></li>
   </ul>
 </nav>
     </div>
@@ -241,17 +242,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="code-references" class="level1">
-<h1>Code references</h1>
-<ul>
-<li>Serverless platform driven loadbalancing policies (Rust): <a href="https://github.com/abrehman94/iluvatar-faas/blob/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/resources/fineloadbalancing.rs">github repo</a></li>
-<li>SCX based custom CPU scheduler (Rust + eBPF): <a href="https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_finesched/src">github repo</a></li>
-</ul>
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p>Serverless platforms maintain a global view of function invocations and resource utilization, yet existing systems largely restrict CPU scheduling decisions to the operating system scheduler. This paper presents a serverless platform-driven CPU load balancing framework that enables the control plane to directly influence CPU scheduling through a custom Linux scheduler built on SchedExt (SCX). The proposed scheduler introduces configurable scheduling domains and a shared interface that allows the control plane to assign functions to domains based on their historical inter-arrival times. Within each domain, a single-queue load-balancing strategy combined with a virtual-time prioritization policy improves task placement while reducing interference from busy-polling tasks. Results show that an eight-domain configuration achieves the best trade-off, reducing system energy consumption by approximately 15% while increasing invocation cost by only 5%. Under heavily loaded workloads, the proposed scheduler also reduces request latency by up to 50% compared to the default Linux Completely Fair Scheduler (CFS). These results demonstrate that exposing CPU scheduling decisions to the serverless control plane can improve both energy efficiency and workload performance while preserving scheduling flexibility.</p>
 </section>
 <section id="paper" class="level1">
 <h1>Paper</h1>
 <ul>
 <li><a href="../data/Serverless_Platform_Driven_CPU_loadbalancing.pdf">Serverless_Platform_Driven_CPU_loadbalancing.pdf</a></li>
+</ul>
+</section>
+<section id="code-references" class="level1">
+<h1>Code references</h1>
+<ul>
+<li>Serverless platform driven loadbalancing policies (Rust): <a href="https://github.com/abrehman94/iluvatar-faas/blob/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/resources/fineloadbalancing.rs">github repo</a></li>
+<li>SCX based custom CPU scheduler (Rust + eBPF): <a href="https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_finesched/src">github repo</a></li>
 </ul>
 
 

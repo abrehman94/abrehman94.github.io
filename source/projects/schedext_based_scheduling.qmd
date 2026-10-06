@@ -14,13 +14,17 @@ description: >
   An approach to group tasks of frequent functions using a custom scheduler.
 ---
 
-# Code references  
+# Abstract
 
-* Serverless platform driven loadbalancing policies (Rust): [github repo](https://github.com/abrehman94/iluvatar-faas/blob/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/resources/fineloadbalancing.rs)
-* SCX based custom CPU scheduler (Rust + eBPF): [github repo](https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_finesched/src)
+Serverless platforms maintain a global view of function invocations and resource utilization, yet existing systems largely restrict CPU scheduling decisions to the operating system scheduler. This paper presents a serverless platform-driven CPU load balancing framework that enables the control plane to directly influence CPU scheduling through a custom Linux scheduler built on SchedExt (SCX). The proposed scheduler introduces configurable scheduling domains and a shared interface that allows the control plane to assign functions to domains based on their historical inter-arrival times. Within each domain, a single-queue load-balancing strategy combined with a virtual-time prioritization policy improves task placement while reducing interference from busy-polling tasks. Results show that an eight-domain configuration achieves the best trade-off, reducing system energy consumption by approximately 15% while increasing invocation cost by only 5%. Under heavily loaded workloads, the proposed scheduler also reduces request latency by up to 50% compared to the default Linux Completely Fair Scheduler (CFS). These results demonstrate that exposing CPU scheduling decisions to the serverless control plane can improve both energy efficiency and workload performance while preserving scheduling flexibility.
 
 # Paper
 
 * [Serverless_Platform_Driven_CPU_loadbalancing.pdf](../data/Serverless_Platform_Driven_CPU_loadbalancing.pdf)
+
+# Code references  
+
+* Serverless platform driven loadbalancing policies (Rust): [github repo](https://github.com/abrehman94/iluvatar-faas/blob/master/src/Il%C3%BAvatar/iluvatar_worker_library/src/services/resources/fineloadbalancing.rs)
+* SCX based custom CPU scheduler (Rust + eBPF): [github repo](https://github.com/abrehman94/iluvatar-faas/tree/master/src/Il%C3%BAvatar/iluvatar_finesched/src)
 
 
